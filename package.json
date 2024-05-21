@@ -10,7 +10,6 @@
     "dev": "node --watch server-with-pg.js",
     "dev:2": "node --watch app.js",
     "dev:3": "node --watch ./Views/index.html"
-
   },
   "keywords": [],
   "author": "",
