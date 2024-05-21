@@ -1,0 +1,13 @@
+### pedido de fotos                                
+GET http://localhost:3000/api/fotos
+
+### crear foto
+POST  http://localhost:3000/api/fotos
+Content-Type: application/json
+
+{
+    "foto" : "https://ibb.c"
+}
+
+### borrar todas las fotos
+DELETE http://localhost:3000/api/fotos/deleteAll
