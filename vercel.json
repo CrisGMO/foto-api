@@ -9,12 +9,8 @@
     "routes": [
       {
         "src": "/",
-        "dest": "/views/index.html"
+        "dest": "/Views/index.html"
       }
-    //   {
-    //     "src": "/api/(.*)",
-    //     "dest": "/api/myApi.js"
-    //   }
     ]
   }
   
