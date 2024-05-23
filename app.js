@@ -18,7 +18,7 @@ export const createApp = ({ fotoModel }) => {
 
   app.use('/api/fotos', createFotoRouter({ fotoModel }))
   app.use('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'api/Views', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'API/Views', 'index.html'));
   })
 
   const PORT = process.env.PORT ?? 3000
