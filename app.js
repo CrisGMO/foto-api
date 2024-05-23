@@ -17,7 +17,7 @@ export const createApp = ({ fotoModel }) => {
   app.disable('x-powered-by')
 
   app.use('/api/fotos', createFotoRouter({ fotoModel }))
-  app.use('/', (req, res) => {
+  app.use('/(.*)', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'API/Views', 'index.html'));
   })
 
