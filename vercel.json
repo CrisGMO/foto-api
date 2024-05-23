@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server-with-pg.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/",
+        "dest": "/views/index.html"
+      }
+    //   {
+    //     "src": "/api/(.*)",
+    //     "dest": "/api/myApi.js"
+    //   }
+    ]
+  }
+  
