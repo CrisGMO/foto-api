@@ -5,6 +5,29 @@ export class FotoController {
     this.fotoModel = fotoModel
   }
 
+  getCount = async (req, res) => {
+    try {
+      const count = await this.fotoModel.getCount();
+      console.log(count);
+      res.json(count);
+    } catch (error) {
+      console.error("Error fetching photos:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
+  getById = async (req, res) => {
+    try {
+      const id = req.params.id
+      const foto = await this.fotoModel.getById(id);
+      console.log(foto);
+      res.json(foto);
+    } catch (error) {
+      console.error("Error fetching photos:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
   getAll = async (req, res) => {
     try {
       const fotos = await this.fotoModel.getAll();
@@ -30,6 +53,12 @@ export class FotoController {
     } catch (err) {
       console.error("Error en respuesta");
     }
+  }
+
+  deleteById = async (req, res) => {
+    const id = req.params.id
+    const result = await this.fotoModel.deleteAll(id);
+    return res.json(`Foto con id=${id} se ha borrado`);
   }
 
   deleteAll = async (req, res) => {
