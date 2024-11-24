@@ -1,8 +1,8 @@
 ### pedido de fotos                                
-GET http://localhost:3000/api/fotos
+GET https://foto-api.vercel.app/api/fotos
 
 ### crear foto
-POST  http://localhost:3000/api/fotos
+POST  https://foto-api.vercel.app/api/fotos
 Content-Type: application/json
 
 {
@@ -10,4 +10,4 @@ Content-Type: application/json
 }
 
 ### borrar todas las fotos
-DELETE http://localhost:3000/api/fotos/deleteAll
+DELETE https://foto-api.vercel.app/api/fotos/deleteAll
