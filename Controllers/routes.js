@@ -7,7 +7,7 @@ export const createFotoRouter = ({ fotoModel }) => {
   const fotoController = new FotoController({ fotoModel })
   
   fotoRouter.get('/', fotoController.getAll)
-  fotoRouter.get('/count', fotoController.getAll)
+  fotoRouter.get('/cantidad', fotoController.getCount)
   fotoRouter.post('/', fotoController.create)
   fotoRouter.delete('/deleteAll', fotoController.deleteAll)
   fotoRouter.delete('/delete/:id', fotoController.deleteById)
