@@ -7,9 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch index.js",
-    "dev:2": "node --watch app.js",
-    "dev:3": "node --watch ./Views/index.html"
+    "dev": "node --watch index-dev.js"
   },
   "keywords": [],
   "author": "",
