@@ -53,17 +53,32 @@ export class FotoController {
       }
     } catch (err) {
       console.error("Error en respuesta");
+      return res.status(500).json({ error: 'Internal server error' });
     }
   }
 
   deleteById = async (req, res) => {
-    const id = req.params.id
-    const result = await this.fotoModel.deleteById(id);
-    return res.json(`Foto con id=${id} se ha borrado`);
+    try {
+      const id = req.params.id;
+      const result = await this.fotoModel.deleteById(id);
+      if (!result) {
+        return res.status(404).json({ error: 'Foto not found' });
+      }
+      console.log(result);
+      return res.status(200).json({ message: `Foto with id=${id} has been deleted` });
+    } catch (err) {
+      console.error("Error deleting foto", err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
   }
 
   deleteAll = async (req, res) => {
-    const result = await this.fotoModel.deleteAll();
-    return res.json("All Rows Delete");
+    try {
+      await this.fotoModel.deleteAll();
+      return res.status(200).json({ message: 'All rows deleted' });
+    } catch (err) {
+      console.error("Error deleting all fotos", err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
   }
 }

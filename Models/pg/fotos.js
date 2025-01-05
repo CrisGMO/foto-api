@@ -54,10 +54,14 @@ export class FotoModel {
     
     try {
       await connection.connect();
-      const newFoto = await connection.query(`INSERT INTO fotos (foto, mensaje) VALUES ($1, $2)`, [foto, mensaje]);
-      return newFoto;
+      const newFoto = await connection.query(
+        `INSERT INTO fotos (foto, mensaje) VALUES ($1, $2) RETURNING *`,
+        [foto, mensaje]
+      );
+      return newFoto.rows[0];
     } catch (err) {
-      console.error("Error");
+      console.error("Error creating foto", err);
+      throw err;
     } finally {
       await connection.end();
     }
@@ -67,10 +71,11 @@ export class FotoModel {
     const connection = new pg.Client(process.env.DATABASE_HOST);
     try {
       await connection.connect();
-      const success = await connection.query(`DELETE FROM fotos WHERE id=($1);`, [id]);
-      return success;
+      const result = await connection.query(`DELETE FROM fotos WHERE id=$1 RETURNING *`, [id]);
+      return result.rowCount > 0;
     } catch (err) {
-      console.error('Error');
+      console.error('Error deleting foto', err);
+      throw err;
     } finally {
       await connection.end();
     }
@@ -83,7 +88,8 @@ export class FotoModel {
       const success = await connection.query(`DELETE FROM fotos;`);
       return success;
     } catch (err) {
-      console.error('Error');
+      console.error('Error deleting all fotos', err);
+      throw err;
     } finally {
       await connection.end();
     }
