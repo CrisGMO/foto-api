@@ -9,7 +9,7 @@ const ACCEPTED_ORIGINS = [
 // || origin.startsWith("http://localhost")
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
   origin: (origin, callback) => {
-    if (acceptedOrigins.includes(origin) ) {
+    if (acceptedOrigins.includes(origin) || origin.startsWith("http://localhost")) {
       return callback(null, true)
     }
 
