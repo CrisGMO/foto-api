@@ -7,7 +7,7 @@ export class FotoModel {
     try {
       await connection.connect();
         // SELECT reltuples::bigint AS total_filas FROM pg_class WHERE relname = 'nombre_tabla';
-      const count = await connection.query('SELECT COUNT(*) AS total_filas FROM fotosdb;');
+      const count = await connection.query('SELECT COUNT(*) AS total_filas FROM fotos;');
       return count.rows;
     } catch (err) {
       console.error("Error executing query:", err);
@@ -21,7 +21,7 @@ export class FotoModel {
     const connection = new pg.Client(process.env.DATABASE_HOST);
     try {
       await connection.connect();
-      const foto = await connection.query('SELECT * FROM fotosdb WHERE id = ($1);', [id] );
+      const foto = await connection.query('SELECT * FROM fotos WHERE id = ($1);', [id] );
       return foto.rows;
     } catch (err) {
       console.error("Error executing query:", err);
@@ -35,7 +35,7 @@ export class FotoModel {
     const connection = new pg.Client(process.env.DATABASE_HOST);
     try {
       await connection.connect();
-      const fotos = await connection.query('SELECT * FROM fotosdb');
+      const fotos = await connection.query('SELECT * FROM fotos;');
       return fotos.rows;
     } catch (err) {
       console.error("Error executing query:", err);
@@ -53,7 +53,7 @@ export class FotoModel {
     
     try {
       await connection.connect();
-      const newFoto = await connection.query(`INSERT INTO fotosdb (foto) VALUES ($1)`, [foto]);
+      const newFoto = await connection.query(`INSERT INTO fotos (foto) VALUES ('$1')`, [foto]);
       return newFoto;
     } catch (err) {
       console.error("Error");
@@ -66,7 +66,7 @@ export class FotoModel {
     const connection = new pg.Client(process.env.DATABASE_HOST);
     try {
       await connection.connect();
-      const success = await connection.query(`DELETE FROM fotosdb WHERE id=($1);`, [id]);
+      const success = await connection.query(`DELETE FROM fotos WHERE id=($1);`, [id]);
       return success;
     } catch (err) {
       console.error('Error');
@@ -79,7 +79,7 @@ export class FotoModel {
     const connection = new pg.Client(process.env.DATABASE_HOST);
     try {
       await connection.connect();
-      const success = await connection.query(`DELETE FROM fotosdb;`);
+      const success = await connection.query(`DELETE FROM fotos;`);
       return success;
     } catch (err) {
       console.error('Error');
