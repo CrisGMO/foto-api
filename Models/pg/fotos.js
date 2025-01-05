@@ -51,8 +51,6 @@ export class FotoModel {
   static async create (input) {
     const connection = new pg.Client(process.env.DATABASE_HOST);
     const { foto , mensaje } = input;
-    console.log(foto);
-    console.log(mensaje);
     
     try {
       await connection.connect();

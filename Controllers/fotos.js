@@ -40,6 +40,7 @@ export class FotoController {
   }
 
   create = async (req, res) => {
+    
     const result = validateFoto(req.body);
     try {
       if (!result.success) {
