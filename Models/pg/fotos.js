@@ -94,4 +94,19 @@ export class FotoModel {
       await connection.end();
     }
   }
+
+  static async getLast() {
+    const connection = new pg.Client(process.env.DATABASE_HOST);
+
+    try {
+      await connection.connect();
+      const result = await connection.query(`SELECT * FROM fotos ORDER BY id DESC LIMIT 1`);
+      return result.rows[0];
+    } catch (err) {
+      console.error('Error getting last foto', err);
+      throw err;
+    } finally {
+      await connection.end();
+    }
+  }
 }

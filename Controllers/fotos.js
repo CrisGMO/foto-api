@@ -81,4 +81,17 @@ export class FotoController {
       return res.status(500).json({ error: 'Internal server error' });
     }
   }
+
+  getLast = async (req, res) => {
+    try {
+      const result = await this.fotoModel.getLast();
+      if (!result) {
+        return res.status(404).json({ error: 'No fotos found' });
+      }
+      return res.status(200).json(result);
+    } catch (err) {
+      console.error("Error getting last foto", err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  }
 }
