@@ -19,6 +19,7 @@ export const createApp = ({ fotoModel }) => {
   app.use('/api/fotos', createFotoRouter({ fotoModel }))
   app.use('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/Views/index.html'));
+    console.log(`Request received: ${req.url}`);    
   })
 
 //   const PORT = process.env.PORT ?? 3000
@@ -27,3 +28,4 @@ export const createApp = ({ fotoModel }) => {
 //     console.log(`server listening on port http://localhost:${PORT}`)
 //   })
 // }
+}
