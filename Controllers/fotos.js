@@ -58,7 +58,7 @@ export class FotoController {
 
   deleteById = async (req, res) => {
     const id = req.params.id
-    const result = await this.fotoModel.deleteAll(id);
+    const result = await this.fotoModel.deleteById(id);
     return res.json(`Foto con id=${id} se ha borrado`);
   }
 
