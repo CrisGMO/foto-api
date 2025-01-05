@@ -50,12 +50,12 @@ export class FotoModel {
 
   static async create (input) {
     const connection = new pg.Client(process.env.DATABASE_HOST);
-    const { foto } = input;
+    const { foto , mensaje } = input;
     console.log(foto);
     
     try {
       await connection.connect();
-      const newFoto = await connection.query(`INSERT INTO fotos (foto) VALUES ($1)`, [foto]);
+      const newFoto = await connection.query(`INSERT INTO fotos (foto)(mensaje) VALUES ($1)($2)`, [foto][mensaje]);
       return newFoto;
     } catch (err) {
       console.error("Error");
