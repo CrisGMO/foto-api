@@ -5,7 +5,8 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:1234',
   'http://localhost:5173',
   'https://foto-api.vercel.app',
-  'https://foto-proyeccion.vercel.app'
+  'https://foto-proyeccion.vercel.app',
+  'https://foto-proyeccion-git-main-crisgmos-projects.vercel.app'
 ]
 
 // || origin.startsWith("http://localhost")
