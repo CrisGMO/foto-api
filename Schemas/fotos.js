@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 const fotoSchema = z.object({
-  foto: z.string().url(),
+  foto: z.string().isOptional,
   mensaje: z.string().max(255)
 })
 
