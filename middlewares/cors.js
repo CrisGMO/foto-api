@@ -12,6 +12,7 @@ const ACCEPTED_ORIGINS = [
 // || origin.startsWith("http://localhost")
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
   origin: (origin, callback) => {
+    console.log('Origin:', origin);
     if (acceptedOrigins.includes(origin)) {
       return callback(null, true)
     }
