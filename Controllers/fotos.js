@@ -41,15 +41,13 @@ export class FotoController {
 
   create = async (req, res) => {
     
-    // const result = validateFoto(req.body);
-    const result = true;
+    const result = validateFoto(req.body);
     try {
       if (!result.success) {
       // 422 Unprocessable Entity
         return res.status(400).json({ error: JSON.parse(result.error.message) });
       }
       else {
-        console.log('entre');
         
         await this.fotoModel.create(result.data);
         return res.status(201).json(result);
