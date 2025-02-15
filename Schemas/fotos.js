@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
 const fotoSchema = z.object({
-  foto: z.string().isOptional,
-  mensaje: z.string().max(255)
+  foto: z.string().isNullable,
+  mensaje: z.string().max(255).isOptional
 })
 
 export function validateFoto (input) {
