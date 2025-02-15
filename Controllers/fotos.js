@@ -49,6 +49,8 @@ export class FotoController {
         return res.status(400).json({ error: JSON.parse(result.error.message) });
       }
       else {
+        console.log('entre');
+        
         await this.fotoModel.create(result.data);
         return res.status(201).json(result);
       }
