@@ -41,7 +41,8 @@ export class FotoController {
 
   create = async (req, res) => {
     
-    const result = validateFoto(req.body);
+    // const result = validateFoto(req.body);
+    const result = true;
     try {
       if (!result.success) {
       // 422 Unprocessable Entity
