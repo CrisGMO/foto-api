@@ -7,7 +7,8 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:5173',
   'https://foto-api.vercel.app',
   'https://foto-proyeccion.vercel.app',
-  'https://foto-proyeccion-git-main-crisgmos-projects.vercel.app'
+  'https://foto-proyeccion-git-main-crisgmos-projects.vercel.app',
+  'https://streampix.site'
 ]
 
 // || origin.startsWith("http://localhost")
