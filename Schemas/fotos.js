@@ -5,6 +5,7 @@ const fotoSchema = z.object({
   foto: z.string().optional(),
   mensaje: z.string().max(255).optional(),
   url: z.string().optional(),
+  extension: z.string().optional(),	
   salon: z.string().optional()
 })
 

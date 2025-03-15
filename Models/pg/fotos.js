@@ -50,13 +50,13 @@ export class FotoModel {
 
   static async create (input) {
     const connection = new pg.Client(process.env.DATABASE_HOST);
-    const { usuario, foto , mensaje, url, salon } = input;
+    const { usuario, foto , mensaje, url, extension, salon } = input;
     
     try {
       await connection.connect();
       const newFoto = await connection.query(
-        `INSERT INTO fotos (usuario, foto, mensaje, url, salon) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-        [usuario, foto, mensaje, url, salon]
+        `INSERT INTO fotos (usuario, foto, mensaje, url, extension, salon) VALUES ($1, $2, $3, $4, $5 , $6) RETURNING *`,
+        [usuario, foto, mensaje, url, extension, salon]
       );
       return newFoto.rows[0];
     } catch (err) {
