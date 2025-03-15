@@ -50,13 +50,13 @@ export class FotoModel {
 
   static async create (input) {
     const connection = new pg.Client(process.env.DATABASE_HOST);
-    const { usuario, foto , mensaje } = input;
+    const { usuario, foto , mensaje, url, salon } = input;
     
     try {
       await connection.connect();
       const newFoto = await connection.query(
-        `INSERT INTO fotos (usuario, foto, mensaje) VALUES ($1, $2, $3) RETURNING *`,
-        [usuario, foto, mensaje]
+        `INSERT INTO fotos (usuario, foto, mensaje, url, salon) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+        [usuario, foto, mensaje, url, salon]
       );
       return newFoto.rows[0];
     } catch (err) {
@@ -75,6 +75,20 @@ export class FotoModel {
       return result.rowCount > 0;
     } catch (err) {
       console.error('Error deleting foto', err);
+      throw err;
+    } finally {
+      await connection.end();
+    }
+  }
+
+  static async deleteByEvent (salon) {
+    const connection = new pg.Client(process.env.DATABASE_HOST);
+    try {
+      await connection.connect();
+      const result = await connection.query(`DELETE FROM fotos WHERE salon=$1 RETURNING *`, [salon]);
+      return result.rowCount > 0;
+    } catch (err) {
+      console.error('Error deleting fotos for event', err);
       throw err;
     } finally {
       await connection.end();
@@ -109,4 +123,21 @@ export class FotoModel {
       await connection.end();
     }
   }
+
+  static async getByEvent(salon) {
+    const connection = new pg.Client(process.env.DATABASE_HOST);
+
+    try {
+      await connection.connect();
+      const result = await connection.query(`SELECT * FROM fotos WHERE salon = $1`, [salon]);
+      return result.rows;
+    } catch (err) {
+      console.error('Error getting fotos for event', err);
+      throw err;
+    } finally {
+      await connection.end();
+    }
+  }
+
+
 }

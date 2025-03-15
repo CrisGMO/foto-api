@@ -3,7 +3,9 @@ import { z } from 'zod'
 const fotoSchema = z.object({
   usuario: z.string().optional(),
   foto: z.string().optional(),
-  mensaje: z.string().max(255).optional()
+  mensaje: z.string().max(255).optional(),
+  url: z.string().optional(),
+  salon: z.string().optional()
 })
 
 export function validateFoto (input) {

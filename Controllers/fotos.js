@@ -28,6 +28,19 @@ export class FotoController {
     }
   }
 
+  getByEvent = async (req, res) => {
+    try {
+      const salon = req.params.salon;
+      const fotos = await this.fotoModel.getByEvent(salon);
+      console.log(fotos);
+      res.json(fotos);
+    }
+    catch (error) {
+      console.error("Error fetching photos:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
   getAll = async (req, res) => {
     try {
       const fotos = await this.fotoModel.getAll();
@@ -69,6 +82,21 @@ export class FotoController {
       return res.status(200).json({ message: `Foto with id=${id} has been deleted` });
     } catch (err) {
       console.error("Error deleting foto", err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  deleteByEvent = async (req, res) => {
+    try {
+      const salon = req.params.salon;
+      const result = await this.fotoModel.deleteByEvent(salon);
+      if (!result) {
+        return res.status(404).json({ error: 'Fotos not found' });
+      }
+      return res.status(200).json({ message: `Fotos for event ${salon} have been deleted` });
+    }
+    catch (err) {
+      console.error("Error deleting fotos for event", err);
       return res.status(500).json({ error: 'Internal server error' });
     }
   }

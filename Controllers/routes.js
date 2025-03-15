@@ -13,6 +13,8 @@ export const createFotoRouter = ({ fotoModel }) => {
   fotoRouter.delete('/deleteAll', fotoController.deleteAll)
   fotoRouter.get('/find/:id', fotoController.getById)
   fotoRouter.get('/last', fotoController.getLast)
+  fotoRouter.get('/salon/:salon', fotoController.getByEvent)
+  fotoRouter.delete('/deleteEvent/:salon', fotoController.deleteByEvent)
 
   return fotoRouter
 }
