@@ -1,6 +1,7 @@
 import cors from 'cors'
 
 const ACCEPTED_ORIGINS = [
+  'https://auth-api-green-pi.vercel.app',
   'https://stream-pix.vercel.app',
   'http://localhost:8080',
   'http://localhost:1234',

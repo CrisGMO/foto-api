@@ -3,6 +3,9 @@ import { FotoController } from './fotos.js'
 
 export const createFotoRouter = ({ fotoModel }) => {
   const fotoRouter = Router()
+  console.log(fotoModel);
+  
+  
 
   const fotoController = new FotoController({ fotoModel })
   

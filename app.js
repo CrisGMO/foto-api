@@ -19,6 +19,8 @@ export const createApp = ({ fotoModel }) => {
   app.disable('x-powered-by')
 
   app.use('/api/fotos', createFotoRouter({ fotoModel }))
+  console.log("dbModel in server.js: ");
+  console.log(fotoModel);
   // app.use('/', (req, res) => {
   //   res.sendFile(path.join(__dirname, '/Views/index.html'));
   // })

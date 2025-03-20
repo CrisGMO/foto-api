@@ -4,7 +4,6 @@ export class FotoModel {
 
   static async getCount() {
     const connection = new pg.Client(process.env.DATABASE_HOST);
-    console.log('a contar');
     
     try {
       await connection.connect();
