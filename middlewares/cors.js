@@ -6,6 +6,7 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:8080',
   'http://localhost:1234',
   'http://localhost:5173',
+  'http://localhost:3000',
   'https://foto-api.vercel.app',
   'https://foto-proyeccion.vercel.app',
   'https://foto-proyeccion-git-main-crisgmos-projects.vercel.app',
